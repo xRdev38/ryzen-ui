@@ -1,0 +1,43 @@
+//-------------------------------
+// Map Component
+//-------------------------------
+
+.c-result-views .leafletMap {
+  height: 600px;
+}
+
+@include mobile() {
+  .c-bien-illustration .leafletMap {
+    height: $bien-illustration-height-mobile;
+  }
+}
+
+@include tablet() {
+  .c-bien-illustration .leafletMap {
+    height: $bien-illustration-height-tablet;
+  }
+}
+
+@include desktop() {
+  .c-bien-illustration .leafletMap {
+    height: $bien-illustration-height-desktop;
+  }
+}
+
+.c-result-views .leafletMap, .c-bien-illustration .leafletMap {
+  width: 100%;
+  font-family: $default-font-face-family;
+  z-index: z('default');
+
+  .customIcon {
+    @include highlightCustomIcon('true');
+    .content {
+      padding: 5px 10px;
+    }
+  }
+
+  .customIconHighlight {
+    @include highlightCustomIcon('true');
+  }
+
+}

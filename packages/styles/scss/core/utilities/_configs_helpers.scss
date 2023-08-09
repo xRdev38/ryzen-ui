@@ -1,0 +1,23 @@
+// -------------------------------
+// == Helpers configurations
+// -------------------------------
+
+// Dynamic class is-very-large
+//----------------------------------------------
+$is-very-large-width: 10rem !default;
+$is-very-large-height: 10rem !default;
+$is-very-large-font-size: get-font-size('large') !default;
+
+// Dynamic class is-very-large
+//----------------------------------------------
+$is-icon-very-large-font-size: get-font-size('large') !default;
+
+
+// Dynamic class is-height-fixed
+// Level helpers
+//----------------------------------------------
+$is-height-fixed: 1.5rem !default;
+
+// Dynamic class animated-dotted
+//----------------------------------------------
+$color-animated-dotted: $red-ng !default;

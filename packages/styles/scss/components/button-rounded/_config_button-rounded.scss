@@ -1,0 +1,25 @@
+//-------------------------------
+// Configuration Button rounded
+//-------------------------------
+
+// Variables
+//-------------------------------
+$button-rounded-padding: 20px;
+$button-rounded-default-width: 40px;
+$button-rounded-default-height: $button-rounded-default-width;
+
+$button-rounded-small-width: 30px;
+$button-rounded-small-height: $button-rounded-small-width;
+
+$button-rounded-medium-width: 50px;
+$button-rounded-medium-height: $button-rounded-medium-width;
+
+$button-rounded-large-width: 70px;
+$button-rounded-large-height: $button-rounded-large-width;
+
+$button-rounded-default-border: 1px solid $black-ter;
+$button-rounded-default-bg-color: $white;
+
+$icon-button-rounded-large-ratio: ($size-5 + 1);
+$icon-button-rounded-large-width: $button-rounded-large-width;
+$icon-button-rounded-large-height: $button-rounded-large-height;

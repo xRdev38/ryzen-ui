@@ -1,0 +1,34 @@
+// -------------------------------
+// == Liste des dossiers
+// -------------------------------
+
+.c-list-dossier {
+  width: $width-c-list-dossier;
+}
+
+.list-item {
+  width: $width-list-item;
+  min-height: $height-list-item;
+  border-bottom: 1px solid $white-ter;
+  &:last-child {
+    border: none;
+  }
+}
+
+#listWidget{
+  .dx-list-item {
+    background-color: transparent !important;
+    border-radius: $radius;
+  }
+  .dx-list-item-content {
+    padding: 0;
+  }
+  .dx-state-focused {
+    background-color: transparent !important;
+  }
+}
+
+
+.is-circle {
+  @extend %is-circle !optional;
+}

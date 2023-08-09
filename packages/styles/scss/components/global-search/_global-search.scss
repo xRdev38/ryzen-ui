@@ -1,0 +1,135 @@
+//-------------------------------
+// Global-search component
+//-------------------------------
+
+.headerbar-search {
+  position: relative;
+}
+
+.back-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $back-icon-width;
+  height: $back-icon-height;
+  color: $back-icon-color;
+  background-color: $back-icon-bg-color;
+  cursor: pointer;
+}
+
+.headerbar-search .control {
+  @extend %is-flex !optional;
+  @extend %is-align-item-center !optional;
+  height: 60px;
+}
+
+.autocomplete-suggestion {
+  position: absolute;
+  top: $auto-suggestion-top;
+  width: $auto-suggestion-width;
+  border-radius: $auto-suggestion-b-radius;
+  box-shadow: $auto-suggestion-b-shadow;
+  background-color: $auto-suggestion-bg-color;
+  overflow: auto;
+  z-index: z('dropdown');
+
+  &.is-opened {
+    max-height: calc(100vh - #{$headerbar-search-input-height});
+  }
+  .item-suggestion:hover{
+    background-color: $item-suggestion-bg-color;
+  }
+}
+
+.is-event .icon {
+  pointer-events: auto !important;
+}
+
+.no-history, .no-result, .loading-search{
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.item-suggestion {
+  padding: 10px 0;
+
+  &:first-child {
+    border-top-left-radius: $radius;
+    border-top-right-radius: $radius;
+    &:hover {
+      background-color: inherit;
+    }
+  }
+  &:last-child {
+    border-bottom-left-radius: $radius;
+    border-bottom-right-radius: $radius;
+  }
+  &:nth-child(even) {
+    background-color: $white-ter;
+  }
+  &:nth-child(odd) {
+    background-color: $white;
+  }
+}
+
+.icon-item-suggestion {
+  padding: 0 20px;
+  @extend %is-flex-align-center-vertical !optional;
+}
+
+.line-item-suggestion {
+  line-height: $line-item-suggestion-line-height;
+}
+
+.quality {
+  width: $quality-width;
+  height: $quality-height;
+  line-height: $quality-line-height;
+  background-color: $quality-bg-color;
+  border-radius: $quality-b-radius;
+}
+
+@include touch() {
+
+  .headerbar-search-input {
+    border-radius: 0;
+    height: $headerbar-search-input-height;
+  }
+
+  .autocomplete-suggestion {
+    top: $autocomplete-suggestion-top;
+    height: calc(100vh - #{$autocomplete-suggestion-height});
+    border-radius: inherit;
+    box-shadow: none;
+  }
+
+  .item-suggestion {
+    &:first-child {
+      border-radius: inherit;
+    }
+    &:last-child {
+      border-radius: inherit;
+    }
+  }
+
+  .headerbar .headerbar-search-input~ .icon {
+      width: $icon-width;
+      height: $icon-height;
+  }
+
+  .control.has-icons-right .input {
+    width: calc(100% - #{$icon-width});
+  }
+
+  .headerbar-search-input~ .delete-input {
+    background-color: darken($white-ter, 5%);
+  }
+
+  .headerbar-search-input:focus {
+    &~ .delete-input {
+      background-color: $delete-input-bg-color;
+    }
+  }
+}

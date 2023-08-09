@@ -1,0 +1,20 @@
+// -----------------------------------
+// == Element de recherche
+// @page: Dossier de prospection
+// -----------------------------------
+
+@import "../../core/vendors/bulma/utilities/initial-variables";
+@import "../../core/vendors/bulma/utilities/functions";
+@import "../../core/vendors/bulma/_bulma-override";
+
+.reload-search-footer {
+  border-radius: $radius;
+
+  background-color: $white-bis;
+}
+
+.search-reload-filter {
+  min-height: 40px;
+  border-radius: $radius;
+  background-color: $white;
+}

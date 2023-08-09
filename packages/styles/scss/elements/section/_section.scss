@@ -1,0 +1,46 @@
+
+.section {
+  padding: $section-padding;
+
+  // Responsiveness
+  @include tablet {
+    // Sizes
+    &.is-medium {
+      padding: $section-padding-medium;
+    }
+
+    &.is-large {
+      padding: $section-padding-large;
+    }
+
+    &.is-small {
+      padding: $section-padding-small;
+    }
+  }
+
+  @include mobile {
+    &:not(.is-top-section) {
+      padding: $section-padding-mobile;
+    }
+      
+  }
+
+  &:first-of-type {
+    padding-top: 0;
+  }
+
+  // Modifiers
+  &.is-top-section {
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    
+    @include mobile {
+      padding-bottom: 2.5rem;
+    }
+  }
+}
+
+.is-top-section + .section {
+  padding-top: 0;
+}

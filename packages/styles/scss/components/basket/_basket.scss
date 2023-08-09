@@ -1,0 +1,87 @@
+
+
+.basket {
+    display: flex;
+    flex-direction: column;
+
+    .basket-header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        height: $basket-header-height;
+        padding-left: 1.5rem;
+        padding-right: 0.25rem;
+        color: $white;
+    }
+
+    .basket-content {
+        padding: 0.5rem;
+        height: $basket-content-min-height;
+        overflow: auto;
+
+        @include mobile {
+            flex: 1;
+            height: inherit;
+        }
+    }
+
+    .basket-footer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        height: $basket-footer-height;
+
+        @include mobile {
+            padding: 0;
+            justify-content: center;
+
+            .buttons {
+                justify-content: center;
+            }
+        }
+    }
+
+    @include mobile {
+        height: 100vh;
+    }
+}
+
+.basket-wrapper {
+    position: fixed;
+    bottom: -100%;
+    right: 55px;
+    background-color: $primary;
+    width: 600px;
+    box-shadow: 0 0 10px 0px rgba(0, 0, 0, 0.3);
+    z-index: z('dropdown');
+    transition: all ease 0.2s;
+
+    // Responsiveness
+    @include mobile {
+        width: 100%;
+        left: 0;
+        top: 100%;
+    }
+
+    &.is-active {
+        // bottom: calc(#{$basket-header-height} - (#{$basket-header-height} + #{$basket-content-min-height} + #{$basket-footer-height}));
+        // TODO:remove bottom:0 et decommenter la ligne du dessus quand le contenu du panier sera implémenté
+        bottom: 0;
+
+         &.is-expanded {
+             bottom: 0;
+         }
+
+         @include mobile {
+            top: calc(100% - 60px);
+
+            &.is-expanded {
+                top: 0;
+            }
+        }
+    }
+}

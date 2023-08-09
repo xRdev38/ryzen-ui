@@ -1,0 +1,26 @@
+html {
+  background-color: $white-ter;
+}
+
+a {
+  font-weight: 400;
+}
+
+body {
+  &.has-top-fixed {
+    padding-top: $headerbar-app-height;
+  }
+  padding-bottom: $headerbar-app-height;
+}
+
+input {
+  font-size: 1em;
+}
+
+input::-webkit-search-decoration,
+input::-webkit-search-cancel-button,
+input::-webkit-search-results-button,
+input::-webkit-search-results-decoration {
+  display: none;
+}
+

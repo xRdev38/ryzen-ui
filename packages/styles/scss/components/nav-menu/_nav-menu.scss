@@ -1,0 +1,66 @@
+// -------------------------------
+// == Nav-menu components
+// -------------------------------
+
+
+.private-avatar {
+  border-radius: 100%;
+  font-size: $nav-menu-user-icon-size;
+  flex: 0 0 auto;
+  width: $nav-menu-width-image;
+  height: $nav-menu-height-image;
+  text-align: center;
+  color: $nav-menu-private-avatar-color;
+  border: .2rem solid $nav-menu-private-avatar-color; //
+}
+
+.agencies .columns .column a.button {
+  width:100%
+}
+
+.banner-agence {
+  margin: $nav-menu-margin-banner;
+  padding: $nav-menu-padding-banner;
+  height: 24px;
+  background-color: whitesmoke;
+  text-align: left;
+}
+
+.overlay-user-footer {
+  margin: $nav-menu-margin-overlay;
+}
+
+.overlay-version {
+  text-align: right;
+}
+
+.exit-dropdown-mobile {
+  position: absolute;
+  right: 0;
+  top: -10px;;
+  z-index: z('default');
+}
+.exit-dropdown-mobile .icon-cross {
+  cursor: pointer;
+}
+@include touch() {
+  .exit-dropdown-mobile {
+    display: block;
+  }
+  .dropdown.is-dropdown-mobile .dropdown-menu {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  .dropdown.is-dropdown-mobile .dropdown-menu .dropdown-content {
+    border-radius:0;
+    box-shadow: none;
+    @media screen and (orientation: landscape) {
+      height: 100vh;
+      overflow-y: auto;
+    }
+  }
+}

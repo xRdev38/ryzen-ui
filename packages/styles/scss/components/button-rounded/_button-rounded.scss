@@ -1,0 +1,55 @@
+//-------------------------------
+// Button rounded
+//-------------------------------
+
+.c-button-rounded {
+  @extend %btn-circle !optional;
+  padding: $button-rounded-padding;
+  width: $button-rounded-default-width;
+  height: $button-rounded-default-height;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: $button-rounded-default-border;
+  background-color: $button-rounded-default-bg-color;
+  cursor: pointer;
+  &.is-small {
+    width: $button-rounded-small-width;
+    height: $button-rounded-small-height;
+  }
+  &.is-medium {
+    width: $button-rounded-medium-width;
+    height: $button-rounded-medium-width;
+  }
+  &.is-large {
+    width: $button-rounded-large-width;
+    height: $button-rounded-large-height;
+    .icon {
+      width: $icon-button-rounded-large-width;
+      height: $icon-button-rounded-large-height;
+      font-size: $icon-button-rounded-large-ratio;
+    }
+  }
+  // Colors
+  @each $name, $pair in $colors {
+    $color: nth($pair, 1);
+    $color-invert: nth($pair, 2);
+
+    &.is-#{$name} {
+      background-color: $color;
+      color: $color-invert;
+      box-shadow: 0 1px 3px rgba($color, 0.4);
+      border-color: $color;
+    }
+  }
+}
+
+.bien-content .c-button-rounded {
+  position: absolute;
+  top: -28px;
+  right: 20px;
+  z-index: z('default');
+}
+
+
+

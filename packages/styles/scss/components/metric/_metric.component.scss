@@ -1,0 +1,68 @@
+.metric {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  width: 7em;
+  height: 6.5em;
+  text-align: right;
+  padding: 0.75em;
+  border-radius: $radius;
+  transition: all ease-out 0.1s;
+
+  &:hover {
+    background-color: lighten($link, 60%);
+    transform: translateY(-0.25em);
+  }
+
+  span {
+    display: block;
+
+    &.metric-number {
+      font-size: $size-2;
+      color: $link;
+      line-height: 3rem;
+      font-weight: $strong-weight;
+    }
+
+    &.metric-label {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      padding-left: 20%;
+      font-size: $size-7;
+      line-height: 1rem;
+      color: $text;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-height: 40%;
+    }
+  }
+}
+
+.metrics {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  &.has-content-right {
+    justify-content: flex-end;
+  }
+
+  // Responsiveness
+  @include mobile {
+    width: 100%;
+
+    .metric {
+      flex-basis: 33%;
+      text-align: left;
+      padding: 0.75em 0.25em;
+      overflow: hidden;
+
+      .metric-label {
+        padding-right: 20%;
+        padding-left: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,43 @@
+@import "_configs-box.scss";
+
+.box {
+  @include block;
+
+  background-color: $box-background-color;
+  border-radius: $box-radius;
+  box-shadow: $box-shadow;
+  color: $box-color;
+  display: block;
+  padding: $box-padding;
+
+  // Sizes
+  &.is-small {
+    padding: $box-padding-small;
+  }
+  
+  // Colors
+  @each $name, $pair in $colors {
+    $color: nth($pair, 1);
+    $color-invert: nth($pair, 2);
+
+    &.is-#{$name} {
+      background-color: $color;
+      color: $color-invert;
+
+      *:not(a) {
+        color: $color-invert;
+      }
+    }
+  }
+}
+
+a.box {
+  &:hover,
+  &:focus {
+    box-shadow: $box-link-hover-shadow;
+  }
+
+  &:active {
+    box-shadow: $box-link-active-shadow;
+  }
+}

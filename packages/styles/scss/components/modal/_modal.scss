@@ -1,0 +1,221 @@
+
+@keyframes anim {
+    from {
+        top: 20px;
+        opacity: 1;
+        transform: translateZ(-400px) rotateX(15deg);
+
+    }
+    to {
+        top: 0;
+        opacity: 1;
+        transform: translateZ(0px) rotateX(0deg); 
+    }
+}
+
+.modal {
+  @include overlay;
+
+  align-items: center;
+  display: none;
+  justify-content: center;
+  overflow: hidden;
+  position: fixed;
+  z-index: z('modal');
+  perspective: 4000px;
+  -webkit-transform: translate3d(0,0,0);
+
+  // Modifiers
+  &.is-active {
+    display: flex;
+  }
+  
+  // Size
+  &.is-small {
+    .modal-content,
+    .modal-card {
+        width: $modal-content-width-small;
+        @include mobile {
+            width: 100%;
+        }
+    }
+    }
+
+  &.is-medium {
+    .modal-content,
+    .modal-card {
+        width: $modal-content-width-medium;
+        @include mobile {
+            width: 100%;
+        }
+    }
+    }
+
+  &.is-large {
+      .modal-content,
+      .modal-card {
+          width: $modal-content-width-large;
+          @include mobile {
+            width: 100%;
+        }
+      }
+  }
+}
+
+.modal-background {
+  @include overlay;
+  background-color: $modal-background-background-color;
+  z-index: z('modal');
+}
+
+.modal-content,
+.modal-card {
+  animation: anim;
+  animation-duration: 0.2s;
+  margin: 0;
+  max-height: calc(100vh - #{$modal-content-spacing-mobile});
+  overflow: auto;
+  position: relative;
+  z-index: z('modal');
+  width: 100%;
+  transform-style: preserve-3d;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+
+  // Responsiveness
+  @include tablet {
+    margin: 0 auto;
+    max-height: calc(100vh - #{$modal-content-spacing-tablet});
+    width: $modal-content-width;
+  }
+}
+
+.modal-simple {
+    .modal-content {
+        border-radius: $radius;
+        background-color: $white;
+        padding: 1.5rem;
+
+        .modal-message {
+            padding-bottom: 1.5rem;
+
+            .title {
+                padding-top: 0.5rem;
+                font-size: $size-4;
+            }
+        }
+
+        .modal-action {
+            text-align: right;
+        }
+    }
+}
+
+.modal-close {
+  @include delete;
+
+  background: none;
+  height: $modal-close-dimensions;
+  position: fixed;
+  right: $modal-close-right;
+  top: $modal-close-top;
+  width: $modal-close-dimensions;
+}
+
+.modal-card {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - #{$modal-card-spacing});
+  overflow: hidden;
+
+  @include mobile {
+      max-height: 100%;
+  }
+}
+
+.modal-card-head {
+    background-color: $modal-card-head-background-color;
+    border-top-left-radius: $modal-card-head-radius;
+    border-top-right-radius: $modal-card-head-radius;
+
+    .modal-card-head-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: $modal-card-head-padding;
+
+        @include mobile {
+            &:not(:last-child) {
+                padding-bottom: 10px;
+            }
+        }
+    }
+
+    @include mobile {
+        border-radius: 0;
+    }
+}
+
+.modal-card-foot {
+    background-color: $modal-card-head-background-color;
+
+    @include mobile {
+        .level-left+.level-right {
+            margin-top: 0.75rem;
+        }
+    }
+}
+
+.modal-card-title {
+  color: $modal-card-title-color;
+  flex-grow: 1;
+  flex-shrink: 1;
+  font-size: $modal-card-title-size;
+  line-height: $modal-card-title-line-height;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  strong {
+      color: $text-strong;
+      font-weight: $weight-light;
+  }
+
+  @include mobile {
+    font-size: $modal-card-title-size-mobile;
+  }
+}
+
+.modal-card-foot {
+    border-bottom-left-radius: $modal-card-foot-radius;
+    border-bottom-right-radius: $modal-card-foot-radius;
+    padding: $modal-card-foot-padding;
+
+    .button {
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+      &.is-text:not(:last-child) {
+          margin-right: 20px;
+      }
+    }
+
+    @include mobile {
+        border-radius: 0;
+        flex-direction: column;
+        padding: 1rem;
+    }
+}
+
+.modal-card-body {
+  @include overflow-touch;
+
+  background-color: $modal-card-body-background-color;
+  flex-grow: 1;
+  flex-shrink: 1;
+  overflow: auto;
+  padding: $modal-card-body-padding;
+}
+
+.modal-opened {
+  overflow: hidden !important;;
+}

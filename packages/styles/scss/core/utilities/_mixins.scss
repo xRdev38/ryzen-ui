@@ -1,0 +1,73 @@
+// ----------------------
+// == Mixins scss
+// ----------------------
+
+/// Permet de tronquer un texte trop long
+/// Note : l'élement parent doit avoir une taille fixé
+/// @param {String} $overflow - type de rendu (par défault ...)
+/// @output 'overflow', 'white-space' and 'text-overflow'
+///
+/// @example scss - truncateText mixin
+///   truncateText("__")
+@mixin truncateText($overflow: ellipsis) {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: $overflow;
+}
+
+@mixin hamburger-dotted {
+  span {
+    background-color: transparent;
+    height: 6px;
+    width: 6px;
+    border-radius: 50%;
+    border: 1px solid currentColor;
+
+    &:nth-child(1) {
+      top: calc(50% - 2px);
+      left: calc(50% - 9px);
+    }
+
+    &:nth-child(2) {
+      top: calc(50% - 2px);
+      left: calc(50% - 1px);
+    }
+
+    &:nth-child(3) {
+      top: calc(50% - 2px);
+      left: calc(50% + 7px);
+    }
+  }
+}
+
+/// Permet de créer des éléments pour les marker de la carte
+/// Note : l'élement parent doit avoir une taille fixé
+/// @param {Boolean} $withBackground - avec background ou non
+///
+/// @example scss - highlightCustomIcon mixin
+///   highlightCustomIcon(true)
+@mixin highlightCustomIcon($withBackground:'false') {
+  width: auto !important;
+  height: 0 !important;
+  position: absolute;
+  margin: 0 !important;
+
+  .content {
+    position: relative;
+    left: -50%;
+    top: -5px;
+    padding: 2px 10px;
+    white-space: nowrap;
+    color: $white-ter;
+    @if $withBackground == 'true' {
+      background-color: $primary;
+    }
+
+    .new {
+      margin-left: -10px;
+      margin-right: 10px;
+      padding: 4px;
+      color: $white-ter;
+    }
+  }
+}

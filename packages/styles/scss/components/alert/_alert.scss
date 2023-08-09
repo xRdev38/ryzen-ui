@@ -1,0 +1,53 @@
+// -------------------------------
+// == Alert components
+// -------------------------------
+
+
+.alerts {
+  position: sticky;
+  top: $alerts-top-position;
+  left: 0;
+  z-index: $alerts-z-index;
+}
+
+.alert {
+  margin: $alert-margin;
+  padding: $alert-padding;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: $alert-min-height;
+  color: $text-invert;
+  background-color: $alert-background-color;
+  border-radius: $alert-radius;
+
+  .delete {
+    @extend %is-absolute !optional;
+    top: 0.9rem;
+    right: 0.5rem;
+  }
+
+  &:last-child {
+    margin-bottom: 1.5rem;
+  }
+
+  // Colors
+  @each $name, $pair in $colors {
+    $color: nth($pair, 1);
+    $color-invert: nth($pair, 2);
+
+    &.is-#{$name} {
+      background-color: $color;
+      color: $color-invert;
+      box-shadow: 0 1px 3px rgba($color, 0.4);
+    }
+  }
+
+  // Responsiveness
+  @include mobile {
+    margin-right: 0;
+    margin-left: 0;
+    border-radius: 0;
+  }
+}

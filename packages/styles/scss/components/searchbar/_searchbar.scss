@@ -1,0 +1,29 @@
+.searchbar {
+    .searchbar-filter {
+        min-height: $sidebar-left-height;
+        background-color: $white;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0.5rem 1rem;
+        
+        &:not(:last-child) {
+            margin-bottom: 1px;
+        }
+    }
+
+    .searchbar-filter-list {
+        display: flex;
+        align-items: center;
+    }
+
+    .searchbar-saved-search {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        background-color: $white;
+        padding: 0.5rem 1rem;
+    }
+}

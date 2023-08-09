@@ -1,0 +1,73 @@
+// -------------------------------
+// == Icon component
+// -------------------------------
+
+.icon {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    height: $icon-dimensions;
+    width: $icon-dimensions;
+    font-size: $icon-dimensions;
+  
+    // Sizes
+    &.is-small {
+        height: $icon-dimensions-small;
+        width: $icon-dimensions-small;
+        font-size: 1rem;
+    }
+  
+    &.is-medium {
+        height: $icon-dimensions-medium;
+        width: $icon-dimensions-medium;
+        font-size: 1.85rem;
+    }
+  
+    &.is-large {
+        height: $icon-dimensions-large;
+        width: $icon-dimensions-large;
+        font-size: 2.5rem;
+    }
+
+    &.is-very-large {
+        height: $icon-dimensions-very-large;
+        width: $icon-dimensions-very-large;
+        font-size: 3.85rem;
+      }
+
+    &.is-circled {
+        border-radius: 50%;
+        border: 1px solid $grey-dark;
+        padding: $icon-dimensions;
+        // Sizes
+        &.is-small {
+            padding: $icon-dimensions-small;
+        }
+    
+        &.is-medium {
+            padding: $icon-dimensions-medium;
+        }
+    
+        &.is-large {
+            padding: $icon-dimensions-large;
+        }
+
+        &.is-very-large {
+            padding: $icon-dimensions-very-large;
+        }
+        &.is-very-large
+        {
+            border-width: 3px;
+        }
+      }
+
+      @each $name, $pair in $colors {
+        $color: nth($pair, 1);
+
+        &.is-#{$name} {
+          color: $color;
+          border-color: $color;
+        }
+      }
+  }
+  

@@ -1,0 +1,79 @@
+// ----------------------
+// == Settings
+// ----------------------
+
+/// font-src-directory : chemin racine de la font
+/// @access public
+/// @type String
+$default-font-src-directory: '/assets/fonts/' !default;
+
+/// Nom de la font pour la déclaration font-face
+/// Typographie de base
+/// @access public
+/// @type String
+$default-font-face-family: 'Roboto Condensed' !default;
+
+/// Chemin racine de la font de base pour le bold
+/// @access public
+/// @type String
+$font-family-bold: '#{$default-font-src-directory}RobotoCondensed-Bold.ttf' !default;
+
+/// Chemin racine de la font de base pour le regular
+/// @access public
+/// @type String
+$font-family-regular: '#{$default-font-src-directory}RobotoCondensed-Regular.ttf' !default;
+
+/// Chemin racine de la font de base pour le light
+/// @access public
+/// @type String
+$font-family-light: '#{$default-font-src-directory}RobotoCondensed-Light.ttf' !default;
+
+/// Nom de la font pour la déclaration font-face
+/// @access public
+/// @type String
+$default-font-face-family-icons: 'tngIconFont' !default;
+
+/// default-font-family-icon : nom de la font des icônes
+/// @access public
+/// @type String
+$default-font-family-icons: 'tngIconFont.ttf' !default;
+
+/// font-family-icons : chemin + nom de la font icônes
+/// @access public
+/// @type String
+$font-family-icons: unquote("#{$default-font-src-directory}#{$default-font-family-icons}") !default;
+
+
+/// Z-indexes map
+/// @access private
+/// @type Map
+/// @prop {String} key - Nom du layer
+/// @prop {Number} value - valeur de z
+$z-indexes: (
+        'ultimate': 6000,
+        'modal': 1500,
+        'dropdown': 1000,
+        'middle' : 500,
+        'default': 1,
+        'below': -1,
+) !default;
+
+/// Font-size map
+/// @access private
+/// @type Map
+/// @prop {String} key - Nom du layer
+/// @prop {String} value - valeur de la font-size
+$f-size: (
+        'xxlarge': 6rem,
+        'xlarge': 5rem,
+        'large': 4rem
+) !default;
+
+/// Headerbar height
+/// @access public
+$headerbar-app-height: 60px !default;
+
+/// Sidebar left width
+/// @access public
+$sidebar-left-width: 55px !default;
+$sidebar-left-height: 60px !default;

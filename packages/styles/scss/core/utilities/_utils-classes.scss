@@ -1,0 +1,524 @@
+// ----------------------
+// == Classes utils
+// ----------------------
+
+@import "_configs_helpers";
+@import "_helpers";
+
+// !important: used only global styles
+//-------------------------------------
+
+.delete
+{
+  @include delete;
+}
+
+// TEXT FEATURES
+//-------------------------------
+
+// So more specific
+//------------------------------
+.level-item > .title-section {
+  margin-bottom: 0;
+}
+
+.title-section {
+  margin-bottom: 1.5rem;
+  font-weight: $weight-normal;
+  color: $grey-light;
+}
+
+.box {
+  .title {
+    font-size: $size-5;
+    font-weight: $weight-light;
+  }
+}
+
+.data-label {
+  color: $grey-light;
+}
+
+.is-legend {
+  font-size: 0.85rem;
+  color: $grey-light;
+  font-style: italic;
+}
+
+.is-required {
+  position: relative;
+
+  &:after {
+    position: absolute;
+    content: "*";
+    right: -0.75rem;
+    top: -0.25rem;
+  }
+
+  &.is-for-activation {
+    &:after {
+      content: "**";
+    }
+  }
+
+  &.is-icon-after {
+    margin-right: 12px;
+  }
+}
+
+.break-line:after {
+  content: "\A";
+  white-space: pre;
+}
+
+.is-event {
+  pointer-events: auto !important;
+}
+
+.is-shadowed {
+  box-shadow: 0 0 6px rgba(0, 0, 0, .2) !important;
+}
+
+.is-rounded {
+  @extend %is-rounded !optional;
+}
+
+@include mobile {
+  .break-line-mobile:after {
+    content: "\A";
+    white-space: pre;
+  }
+}
+
+@include tablet {
+  .break-line-tablet:after {
+    content: "\A";
+    white-space: pre;
+  }
+}
+
+@include touch {
+  .break-line-touch:after {
+    content: "\A";
+    white-space: pre;
+  }
+}
+
+@include desktop {
+  .break-line-desktop:after {
+    content: "\A";
+    white-space: pre;
+  }
+}
+
+.is-flex-align {
+  @extend %is-flex !optional;
+}
+
+.is-vertical-align {
+  @extend %vertical-align !optional;
+}
+
+.is-align-center-v {
+  @extend %is-flex-align-center-vertical !optional;
+}
+
+.is-align-center-h {
+  @extend %is-flex !optional;
+  @extend is-align-item-center !optional;
+  width: 100%;
+}
+
+.is-inline {
+  @extend %is-inline !optional;
+}
+
+// LEVEL FEATURES
+//-------------------------------
+.is-height-fixed {
+  @extend %is-height-fixed !optional;
+}
+
+// FLEX FEATURES
+.is-column {
+  @extend %is-column !optional;
+}
+
+.is-flex-align-left {
+  @extend %is-flex-align-left !optional;
+}
+
+.is-justify-align-left {
+  @extend %is-justify-align-left !optional;
+}
+
+.is-justify-space-between {
+  @extend %is-justify-space-between !optional;
+}
+
+.is-growed {
+  @extend %is-growed !optional;
+}
+
+.is-shrinked {
+  @extend %is-shrinked !optional;
+}
+
+.is-wrapped {
+  @extend %is-wrapped !optional;
+}
+
+.is-column-reverse {
+  @extend %is-column-reverse !optional;
+}
+
+.has-boxes .column {
+  @extend %is-flex-column !optional;
+  .box {
+    @extend %is-growed !optional;
+  }
+}
+
+@for $i from 1 to 24 {
+  .is-order-#{$i} {
+    order: unquote("#{$i}");
+  }
+
+  @include mobile {
+    .is-order-#{$i}-mobile {
+      order: unquote("#{$i}");
+    }
+  }
+
+  @include tablet {
+    .is-order-#{$i}-tablet {
+      order: unquote("#{$i}");
+    }
+  }
+
+  @include touch {
+    .is-order-#{$i}-touch {
+      order: unquote("#{$i}");
+    }
+  }
+
+  @include desktop {
+    .is-order-#{$i}-desktop {
+      order: unquote("#{$i}");
+    }
+  }
+}
+
+@include mobile {
+  .is-column-mobile {
+    flex-direction: column;
+  }
+}
+
+@include tablet {
+  .is-column-tablet {
+    flex-direction: column;
+  }
+}
+
+@include touch {
+  .is-column-touch {
+    flex-direction: column;
+  }
+}
+
+@include desktop {
+  .is-column-desktop {
+    flex-direction: column;
+  }
+}
+
+@include mobile {
+  .is-column-reverse-mobile {
+    flex-direction: column-reverse;
+  }
+}
+
+@include tablet {
+  .is-column-reverse-tablet {
+    flex-direction: column-reverse;
+  }
+}
+
+@include touch {
+  .is-column-reverse-touch {
+    flex-direction: column-reverse;
+  }
+}
+
+@include desktop {
+  .is-column-reverse-desktop {
+    flex-direction: column-reverse;
+  }
+}
+
+// MARGIN + PADDING FEATURES
+//-------------------------------
+$properties: margin, padding;
+$sides: top, right, bottom, left;
+
+@each $prop in $properties {
+  @for $i from 0 through 14 {
+    .#{str-slice($prop, 0, 1)}-#{$i * 5} {
+      #{$prop}: #{$i * 5}px !important;
+    }
+
+    @include mobile {
+      .#{str-slice($prop, 0, 1)}-#{$i * 5}-mobile {
+        #{$prop}: #{$i * 5}px !important;
+      }
+    }
+
+
+    @include tablet {
+      .#{str-slice($prop, 0, 1)}-#{$i * 5}-tablet {
+        #{$prop}: #{$i * 5}px !important;
+      }
+    }
+
+
+    @include touch {
+      .#{str-slice($prop, 0, 1)}-#{$i * 5}-touch {
+        #{$prop}: #{$i * 5}px !important;
+      }
+    }
+
+
+    @include desktop {
+      .#{str-slice($prop, 0, 1)}-#{$i * 5}-desktop {
+        #{$prop}: #{$i * 5}px !important;
+      }
+    }
+
+
+    @each $side in $sides {
+      .#{str-slice($prop, 0, 1)}-#{str-slice($side, 0, 1)}-#{$i * 5} {
+        #{$prop}-#{$side}: #{$i * 5}px !important;
+      }
+
+      @include mobile {
+        .#{str-slice($prop, 0, 1)}-#{str-slice($side, 0, 1)}-#{$i * 5}-mobile {
+          #{$prop}-#{$side}: #{$i * 5}px !important;
+        }
+      }
+
+
+      @include tablet {
+        .#{str-slice($prop, 0, 1)}-#{str-slice($side, 0, 1)}-#{$i * 5}-tablet {
+          #{$prop}-#{$side}: #{$i * 5}px !important;
+        }
+      }
+
+
+      @include touch {
+        .#{str-slice($prop, 0, 1)}-#{str-slice($side, 0, 1)}-#{$i * 5}-touch {
+          #{$prop}-#{$side}: #{$i * 5}px !important;
+        }
+      }
+
+
+      @include desktop {
+        .#{str-slice($prop, 0, 1)}-#{str-slice($side, 0, 1)}-#{$i * 5}-desktop {
+          #{$prop}-#{$side}: #{$i * 5}px !important;
+        }
+      }
+    }
+  }
+
+  .#{str-slice($prop, 0, 1)}-y-auto {
+    #{$prop}-top: auto !important;
+    #{$prop}-bottom: auto !important;
+  }
+
+  @include mobile {
+    .#{str-slice($prop, 0, 1)}-y-auto-mobile {
+      #{$prop}-top: auto !important;
+      #{$prop}-bottom: auto !important;
+    }
+  }
+
+
+  @include tablet {
+    .#{str-slice($prop, 0, 1)}-y-auto-tablet {
+      #{$prop}-top: auto !important;
+      #{$prop}-bottom: auto !important;
+    }
+  }
+
+
+  @include touch {
+    .#{str-slice($prop, 0, 1)}-y-auto-touch {
+      #{$prop}-top: auto !important;
+      #{$prop}-top: auto !important;
+    }
+  }
+
+
+  @include desktop {
+    .#{str-slice($prop, 0, 1)}-y-auto-desktop {
+      #{$prop}-top: auto !important;
+      #{$prop}-bottom: auto !important;
+    }
+  }
+
+  .#{str-slice($prop, 0, 1)}-x-auto {
+    #{$prop}-left: auto !important;
+    #{$prop}-right: auto !important;
+  }
+
+  @include mobile {
+    .#{str-slice($prop, 0, 1)}-x-auto-mobile {
+      #{$prop}-left: auto !important;
+      #{$prop}-right: auto !important;
+    }
+  }
+
+
+  @include tablet {
+    .#{str-slice($prop, 0, 1)}-x-auto-tablet {
+      #{$prop}-left: auto !important;
+      #{$prop}-right: auto !important;
+    }
+  }
+
+
+  @include touch {
+    .#{str-slice($prop, 0, 1)}-x-auto-touch {
+      #{$prop}-left: auto !important;
+      #{$prop}-right: auto !important;
+    }
+  }
+
+
+  @include desktop {
+    .#{str-slice($prop, 0, 1)}-x-auto-desktop {
+      #{$prop}-left: auto !important;
+      #{$prop}-right: auto !important;
+    }
+  }
+}
+
+// SIZES - (WIDTH) FEATURES
+//-------------------------------
+@for $i from 1 to 11 {
+  .w-#{$i * 10} {
+    width: unquote("#{$i * 10}% !important");
+  }
+
+  @include mobile {
+    .w-#{$i * 10}-mobile {
+      width: unquote("#{$i * 10}% !important");
+    }
+  }
+
+  @include tablet {
+    .w-#{$i * 10}-tablet {
+      width: unquote("#{$i * 10}% !important");
+    }
+  }
+
+  @include touch {
+    .w-#{$i * 10}-touch {
+      width: unquote("#{$i * 10}% !important");
+    }
+  }
+
+  @include desktop {
+    .w-#{$i * 10}-desktop {
+      width: unquote("#{$i * 10}% !important");
+    }
+  }
+}
+
+
+$sizes: (
+        "small": "320",
+        "medium": "500",
+        "large": "800"
+);
+
+@each $size, $i in $sizes {
+
+  .w-#{$size} {
+    width: unquote("#{$i}px  !important");
+  }
+
+  @include mobile {
+    .w-#{$size}-mobile {
+      width: unquote("#{$i}px  !important");
+    }
+  }
+
+  @include tablet {
+    .w-#{$size}-tablet {
+      width: unquote("#{$i}px  !important");
+    }
+  }
+
+  @include touch {
+    .w-#{$size}-touch {
+      width: unquote("#{$i}px  !important");
+    }
+  }
+
+  @include desktop {
+    .w-#{$size}-desktop {
+      width: unquote("#{$i}px  !important");
+    }
+  }
+
+}
+
+// POSITIONNING
+//-------------------------------
+
+.is-relative {
+  position: relative;
+}
+
+.is-top-left {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: z('default');
+}
+
+.is-top-right {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: z('default');
+}
+
+.is-bottom-right {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: z('default');
+}
+
+.is-bottom-left {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: z('default');
+}
+
+// TO STICK AN ELEMENT
+//-------------------------------
+.is-sticky {
+  position: sticky;
+  left: 0;
+  top: 100px;
+  background-color: rgba($white-ter, 0.5);
+  z-index: z('default');
+
+  &.is-sticky-bottom {
+    bottom: -1.5rem;
+  }
+}

@@ -1,0 +1,39 @@
+//-------------------------------
+// Dotted button
+//-------------------------------
+
+.dotted {
+  position: relative;
+  a {
+    position: absolute;
+    left: $dotted-link-position-left;
+  }
+}
+
+.dotted:hover {
+  a {
+    color: $dotted-link-bg-color;
+  }
+}
+
+.burger span {
+  background-color: currentColor;
+  display: block;
+  height: 1px;
+  left: calc(50% - 8px);
+  position: absolute;
+  -ms-transform-origin: center;
+  transform-origin: center;
+  transition-duration: 86ms;
+  transition-property: background-color,opacity,transform;
+  transition-timing-function: ease-out;
+  width: $dotted-burger-span-width;
+}
+
+.burger-dotted span {
+  background-color: transparent;
+  width: $dotted-burger-dotted-span-width;
+  height: $dotted-burger-dotted-span-height;
+  border-radius: $dotted-burger-dotted-span-border-radius;
+  border: 1px solid currentColor;
+}

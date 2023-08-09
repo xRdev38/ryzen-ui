@@ -1,0 +1,614 @@
+// -------------------------------
+// == Override Bulma button
+// -------------------------------
+
+// The button sizes use mixins so they can be used at different breakpoints
+@mixin button-very-small {
+  height: 1.5rem;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+}
+
+@mixin button-small {
+  border-radius: $radius-rounded;
+  font-size: $size-small;
+}
+
+@mixin button-medium {
+  font-size: $size-medium;
+}
+
+@mixin button-large {
+  font-size: $size-large;
+  font-weight: 300;
+}
+
+%is-text {
+  background-color: transparent;
+  border-color: transparent;
+  color: $button-text-color;
+  padding: 0;
+  margin-left: 0.75em;
+  margin-right: 0.75em;
+  position: relative;
+  border: none;
+
+  &:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 15%;
+    left: 0;
+    background-color: $button-text-color;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.1s ease-in-out 0s;
+  }
+
+  &:hover,
+  &.is-hovered,
+  &:focus,
+  &.is-focused {
+    background-color: transparent;
+    box-shadow: none;
+    color: $button-text-hover-color;
+
+    &:before {
+      visibility: visible;
+      transform: scaleX(1);
+    }
+  }
+
+  &:active,
+  &.is-active {
+    background-color: transparent;
+    color: darken($button-text-hover-color, 30%);
+  }
+
+  &[disabled] {
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: none;
+  }
+
+  @each $name, $pair in $colors {
+    $color: nth($pair, 1);
+
+    &.is-#{$name} {
+      background: none;
+      color: $color;
+
+      &:before {
+        background-color: $color;
+      }
+
+      &:hover,
+      &:focus,
+      &.is-hover {
+        background: none;
+        box-shadow: none;
+        color: $color;
+
+        &:before {
+          background-color: $color;
+        }
+      }
+
+      &:active,
+      &.is-active {
+        color: darken($color, 30%);
+
+        &:before {
+          background-color: darken($color, 30%);
+        }
+      }
+    }
+  }
+}
+
+.button {
+  @include control;
+  @include unselectable;
+
+  background-color: $button-background-color;
+  border-color: $button-border-color;
+  color: $button-color;
+  cursor: pointer;
+  justify-content: center;
+  padding-left: 1em;
+  padding-right: 1em;
+  text-align: center;
+  white-space: nowrap;
+  border-radius: $radius-rounded;
+  transition: all ease 0.1s;
+
+  strong {
+    color: inherit;
+  }
+
+  .icon {
+    &,
+    &.is-small,
+    &.is-medium,
+    &.is-large {
+      width: 1.5em;
+    }
+
+    &:first-child:not(:last-child) {
+      margin-left: calc(-0.375em - 1px);
+    }
+      
+    &:last-child:not(:first-child) {
+      margin-right: calc(-0.375em - 1px);
+    }
+      
+    &:first-child:last-child {
+      margin-left: calc(-0.375em - 1px);
+      margin-right: calc(-0.375em - 1px);
+    }
+
+    @include mobile {
+      &.icon-only-mobile:first-child:not(:last-child),
+      &.icon-only-mobile:last-child:not(:first-child) {
+        margin-left: calc(-0.375em - 1px);
+        margin-right: calc(-0.375em - 1px);
+      }
+    }
+    @include tablet {
+      &.icon-only-tablet:first-child:not(:last-child),
+      &.icon-only-tablet:last-child:not(:first-child) {
+        margin-left: calc(-0.375em - 1px);
+        margin-right: calc(-0.375em - 1px);
+      }
+    }
+    @include touch {
+      &.icon-only-touch:first-child:not(:last-child),
+      &.icon-only-touch:last-child:not(:first-child) {
+        margin-left: calc(-0.375em - 1px);
+        margin-right: calc(-0.375em - 1px);
+      }
+    }  
+    @include desktop {
+      &.icon-only-desktop:first-child:not(:last-child),
+      &.icon-only-desktop:last-child:not(:first-child) {
+        margin-left: calc(-0.375em - 1px);
+        margin-right: calc(-0.375em - 1px);
+      }
+    }        
+  }
+
+  // States
+  &:hover,
+  &.is-hovered {
+    border-color: $button-hover-border-color;
+    color: $button-hover-color;
+    box-shadow: 0 0 0 2px $button-hover-border-color;
+  }
+
+  &:focus,
+  &.is-focused {
+    border-color: $button-focus-border-color;
+    color: $button-focus-color;
+
+    &:not(:active) {
+      //box-shadow: $button-focus-box-shadow-size $button-focus-box-shadow-color;
+    }
+  }
+
+  &:active,
+  &.is-active {
+    //border-color: $button-active-border-color
+    background: $button-hover-border-color;
+    box-shadow: none;
+    transition: none;
+    color: $button-active-color;
+  }
+
+  // Colors
+  &.is-text {
+    @extend %is-text;
+  }
+
+  &.is-inside-text {
+    @extend %is-text;
+    line-height: inherit;
+    padding: 0;
+    margin: 0;
+    display: inline;
+    vertical-align: inherit;
+    white-space: normal;
+    height: inherit;
+    font-size: inherit;
+    &:before {
+      bottom: 0;
+    }
+  }
+
+  @each $name, $pair in $colors {
+    $color: nth($pair, 1);
+    $color-invert: nth($pair, 2);
+
+    &.is-#{$name} {
+      background-color: $color;
+      border-color: transparent;
+      color: $color-invert;
+
+      &:hover,
+      &.is-hovered {
+        background-color: darken($color, 2.5%);
+        border-color: transparent;
+        color: $color-invert;
+        box-shadow: 0 0 0 2px darken($color, 2.5%);
+      }
+
+      &:focus,
+      &.is-focused {
+        border-color: transparent;
+        color: $color-invert;
+      }
+
+      &:active,
+      &.is-active {
+        background-color: darken($color, 30%);
+        border-color: transparent;
+        color: $color-invert;
+        transition: none;
+        box-shadow: none;
+      }
+
+      &[disabled] {
+        background-color: $color;
+        border-color: transparent;
+        box-shadow: none;
+      }
+
+      &.is-inverted {
+        background-color: $color-invert;
+        color: $color;
+
+        &:hover,
+        &.is-hovered {
+          background-color: lighten($color, 42%);
+          border-color: transparent;
+          color: $color;
+          box-shadow: 0 0 0 2px lighten($color, 42%);
+        }
+
+        &:active,
+        &.is-active {
+          background-color: darken($color, 30%);
+          box-shadow: 0 0 0 2px darken($color, 30%);
+          color: $color-invert;
+        }
+
+        &[disabled] {
+          background-color: $color-invert;
+          border-color: transparent;
+          box-shadow: none;
+          color: $color;
+        }
+      }
+
+      &.is-loading {
+        &:after {
+          border-color: transparent transparent $color-invert $color-invert !important;
+        }
+      }
+
+      &.is-outlined {
+        background-color: transparent;
+        border-color: $color;
+        color: $color;
+
+        &:hover,
+        &:focus {
+          background-color: $color;
+          border-color: $color;
+          color: $color-invert;
+        }
+
+        &:active,
+        &.is-active {
+          background-color: darken($color, 30%);
+          border-color: darken($color, 30%);
+        }
+
+        &.is-loading {
+          &:after {
+            border-color: transparent transparent $color $color !important;
+          }
+        }
+
+        &[disabled] {
+          background-color: transparent;
+          border-color: $color;
+          box-shadow: none;
+          color: $color;
+        }
+      }
+
+      &.is-inverted.is-outlined {
+        background-color: transparent;
+        border-color: $color-invert;
+        color: $color-invert;
+
+        &:hover,
+        &:focus {
+          background-color: $color-invert;
+          color: $color;
+        }
+
+        &[disabled] {
+          background-color: transparent;
+          border-color: $color-invert;
+          box-shadow: none;
+          color: $color-invert;
+        }
+      }
+    }
+  }
+
+  &.is-transparent {
+    background-color: transparent;
+    border: none;
+
+    &:hover {
+      color: $text;
+      background-color: darken($white-ter, 5);
+      box-shadow: 0 0 0 2px darken($white-ter, 5);
+    }
+
+    &:active {
+      color: $text;
+      background-color: darken($white-ter, 5);
+      box-shadow: 0 0 0 2px darken($white-ter, 5);
+    }
+  }
+
+  // Sizes
+  &.is-very-small {
+    @include button-very-small;
+  }
+
+  &.is-small {
+    @include button-small;
+  }
+
+  &.is-medium {
+    @include button-medium;
+  }
+
+  &.is-large {
+    @include button-large;
+  }
+
+  &.is-large-tablet {
+    @include tablet {
+      @include button-large;
+    }
+  }
+
+  &.is-large-desktop {
+    @include desktop {
+      @include button-large;
+    }
+  }
+
+  // Modifiers
+  &[disabled] {
+    background-color: $button-disabled-background-color;
+    border-color: $button-disabled-border-color;
+    box-shadow: $button-disabled-shadow;
+    opacity: $button-disabled-opacity;
+  }
+
+  &.is-fullwidth {
+    display: flex;
+    width: 100%;
+  }
+
+  &.is-loading {
+    color: transparent !important;
+    pointer-events: none;
+
+    &:after {
+      @include loader;
+      @include center(1em);
+
+      position: absolute !important;
+    }
+  }
+
+  &.is-static {
+    background-color: $button-static-background-color;
+    border-color: $button-static-border-color;
+    color: $button-static-color;
+    box-shadow: none;
+    pointer-events: none;
+  }
+
+  &.is-rounded {
+    border-radius: $radius-rounded;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+}
+
+.buttons {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+
+  .button {
+    margin-bottom: 0.5rem;
+
+    &:not(:last-child) {
+      margin-right: 0.5rem;
+    }
+
+    &.is-text {
+      &:not(:last-child) {
+        margin-right: 1.5rem;
+      }
+    }
+
+    &.is-expanded {
+      flex: 1;
+    }
+
+  }
+
+  &:last-child {
+    margin-bottom: -0.5rem;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  &.has-addons {
+    margin-bottom: 0;
+
+    @each $name, $pair in $colors {
+      $color: nth($pair, 1);
+      $color-invert: nth($pair, 2);
+  
+      &.is-#{$name} {
+        background-color: rgba($color, 0.08);
+        border-radius: $radius-rounded;
+
+        .button {
+          //background-color: rgba($color, 0.06);
+          color: $color;
+          border: none;
+          background-color: transparent;
+
+          &.is-active {
+            background-color: $color;
+            color: $color-invert;
+          }
+
+          &:hover {
+            box-shadow: 0 0 0 2px $color;
+            background-color: $color;
+            color: $color-invert;
+          }
+
+          &:active {
+            background-color: darken($color, 30%);
+            box-shadow: none;
+            color: $color-invert;
+          }
+        }
+
+        &.is-inverted {
+          .button {
+            background-color: $color-invert;
+
+            &:hover {
+              background-color: rgba($color, 0.1);
+              box-shadow: 0 0 0 2px rgba($color, 0.1);
+              color: $color;
+            }
+
+            &:active {
+              background-color: $color;
+              box-shadow: 0 0 0 2px $color;
+              color: $color-invert;
+            }
+          }
+        }
+      }
+
+      &.is-white {
+        background-color: rgba($dark, 0.05);
+
+        .button {
+          color: $dark;
+
+          &:hover {
+            background-color: $color-invert;
+          }
+
+          &:active {
+            background-color: darken($color-invert, 30%);
+          }
+        }
+      }
+      &.has-text-#{$name} {
+        .button {
+          color: $color !important;
+        }
+      }
+    }
+
+    .button {
+      margin-bottom: 0;
+
+      &:not(:first-child) {
+        /* border-bottom-left-radius: 0;
+        border-top-left-radius: 0; */
+      }
+
+      &:not(:last-child) {
+        /* border-bottom-right-radius: 0;
+        border-top-right-radius: 0; */
+        margin-right: -1px;
+      }
+
+      &:last-child {
+        margin-right: 0;
+      }
+
+      &:hover,
+      &.is-hovered {
+        z-index: 2;
+      }
+
+      &:focus,
+      &.is-focused,
+      &:active,
+      &.is-active,
+      &.is-selected {
+        z-index: 3;
+        border-color: rgba($button-border-color, 0.1);
+
+        &:hover {
+          z-index: 4;
+        }
+      }
+    }
+
+    &.has-addons-collapsed {
+      .button {
+        &:not(:first-child) {
+          border-bottom-left-radius: 0;
+          border-top-left-radius: 0;
+        }
+  
+        &:not(:last-child) {
+          border-bottom-right-radius: 0;
+          border-top-right-radius: 0;
+        }
+      }
+    }
+  }
+
+  &.is-centered {
+    justify-content: center;
+  }
+
+  &.is-right {
+    justify-content: flex-end;
+  }
+
+  &.is-marginless {
+    margin: 0;
+
+    .button {
+      margin: 0;
+    }
+  }
+}

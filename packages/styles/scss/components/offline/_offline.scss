@@ -1,0 +1,59 @@
+@keyframes offline-mode-message {
+    from {
+      height: 0;
+    }
+    to {
+      height: 30px;
+    }
+  }
+
+.is-offline {
+    transition: all ease 0.1s;
+    @include desktop {
+        min-height: 100vh;
+        height: calc(100vh - 30px);
+        
+        &:after {
+            content: "";
+            position: fixed;
+            background: $body-offline-color;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 8px;
+            z-index: z('middle');
+        }
+    }
+
+    .offline-mode-message {
+        display: flex;
+    }
+
+    .offline-not-displayed {
+        display: none !important;
+    }
+
+    .sidebar-left {
+        .sidebar-wrapper {
+            height: calc(100% - 90px);
+        }
+    }
+}
+
+.label-deconnection {
+    line-height: 2;
+}
+
+.offline-mode-message
+{
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: $body-offline-color;
+    color: $white;
+    text-align: center;
+    height: 30px;
+    font-size: $size-7;
+    animation: offline-mode-message ease 0.1s;
+}

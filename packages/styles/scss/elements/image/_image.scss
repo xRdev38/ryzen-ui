@@ -1,0 +1,60 @@
+.gallery {
+    ul {
+        display: flex;
+        flex-direction: row;
+        
+        @include tablet {
+            flex-wrap: wrap;
+        }
+
+        @include mobile {
+            overflow-x: auto; 
+        }
+    }
+
+    .image {
+        margin-right: 0.75rem;
+        margin-left: 0.75rem;
+        margin-bottom: 0.75rem;
+        border-radius: $radius;
+    
+        &:first-child {
+            margin-left: 0;
+        }
+    
+        img {
+            height: 150px;
+            width: auto;
+            border-radius: $radius;
+        }
+    
+        &:hover,
+        &.is-selected {
+            background-color: $info;
+            box-shadow: 0 0 0 5px $info;
+    
+            .image-action {
+                visibility: visible;
+            }
+        }
+    
+        .image-action {
+            visibility: hidden;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.25rem;
+            padding-bottom: 0;
+        }
+
+        @include mobile {
+            flex-shrink: 0;
+        }
+    }
+}
+
+.image-wrapper {
+    display: flex;
+    justify-content: center;
+}

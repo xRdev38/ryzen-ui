@@ -1,0 +1,194 @@
+.header-page {
+  padding: 0 0 20px 0;
+  margin-top: 20px; 
+
+  @include desktop {
+    margin-right: 55px;
+    position: sticky;
+    left: 0;
+    top: 60px;
+  }
+
+  h1.title {
+    transition: all ease 0.1s;
+  }
+
+  .header-page-title {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+
+    .header-page-title-back {
+      width: 60px;
+    }
+
+    @include desktop {
+      .header-page-title-back,
+      .header-page-title-right {
+        margin-top: 30px;
+      }
+    }
+
+    .header-page-title-left {
+      flex: 1;
+
+      .header-page-title-left-wrapper {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        @include desktop {
+          margin-top: -10px;
+        }
+        @include touch {
+          flex-wrap: wrap;
+        }
+      }
+    }
+
+    .header-page-title-right {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
+    .buttons {
+      flex-wrap: nowrap;
+    }
+
+    .header-page-item {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      min-height: 36px;
+
+      &:not(:last-child) {
+        margin-right: 1.25rem;
+      }
+
+      @include touch {
+        &:not(:last-child) {
+          margin-bottom: 0.75rem;
+        }
+      }
+    }
+
+    @include touch {
+      flex-wrap: wrap;
+      margin-top: 0;
+
+      .header-page-title-back {
+        order: -2;
+        flex: 1 0 20%;
+        background-color: darken($white-ter, 3);
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+        margin-bottom: 0.75rem;
+        padding-left: 0.75rem;
+      }
+
+      .header-page-title-left {
+        flex-wrap: wrap;
+        padding-left: 0.75rem;
+        flex-basis: 100%;
+        &:last-child:first-child {
+          margin-top: 1rem;
+        }
+        .header-page-item {
+          &:first-child:not(:last-child) {
+            margin-bottom: 0.25rem;
+          }
+        }
+      }
+      
+      .header-page-title-right {
+        order: -1;
+        flex: 1 0 80%;
+        justify-content: flex-end;
+        padding-top: 0.75rem;
+        margin-bottom: 0.75rem;
+        padding-right: 0.75rem;
+        width: 100%;
+        background-color: darken($white-ter, 3);
+
+        &.is-expanded 
+        {
+          flex-basis: 100%;
+        }
+      }
+    }
+  }
+
+  h1.title {
+    font-weight: $weight-light;
+    font-size: $size-3;
+    min-height: 36px;
+
+    @include touch {
+      min-height: inherit;
+      font-size: $size-4;
+    }
+  }
+
+  h2.subtitle {
+    font-weight: $weight-normal;
+    font-size: $size-5;
+    color: $grey-light;
+    margin-top: -1.55rem;
+    position: absolute;
+
+    @include touch {
+      font-size: $size-6;
+    }
+  }
+
+  //Responsiveness
+  @include touch {
+    padding: 0 0 1rem 0;
+    margin-top: 0;
+
+    h1 {
+      font-size: $size-6;
+    }
+  }
+
+  // Modifiers
+  @include desktop {
+    &.is-stuck {
+      z-index: 500;
+      box-shadow: 0 3px 2px -3px rgba(0, 0, 0, .4) !important;
+      background-color: rgba($white-ter, 0.95);
+      padding-bottom: 5px;
+  
+      .header-page-title .header-page-title-left .header-page-title-left-wrapper {
+        margin-top: -15px;
+      }
+  
+      .header-page-title .header-page-title-back,
+      .header-page-title .header-page-title-right {
+        margin-top: 18px;
+      }
+
+      .breadcrumb {
+        padding-bottom: 0.25rem;
+
+        a {
+          font-size: 0.75rem;
+        }
+      }
+  
+      h1.title {
+        font-size: $size-4;
+        min-height: 24px;
+        line-height: 36px;
+        
+        &:not(:last-child) {
+          margin-bottom: 1.15rem;
+        }
+      }
+
+      h2.subtitle {
+        font-size: $size-6;
+      }
+    }
+  }
+}

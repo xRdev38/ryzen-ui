@@ -1,0 +1,283 @@
+// ----------------------
+// == Helpers scss
+// ----------------------
+
+@import "../vendors/bulma/utilities/mixins";
+
+@import "_configs_helpers";
+
+@mixin is-dropdown-mobile() {
+    .exit-dropdown-mobile{
+        display: none;
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        z-index: 1;
+    }
+    .exit-dropdown-mobile .icon-cross{
+        cursor: pointer;
+    }
+    @include touch() {
+        .exit-dropdown-mobile{
+            display: block;
+        }
+        .dropdown.is-dropdown-mobile .dropdown-menu {
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+        .dropdown.is-dropdown-mobile .dropdown-menu .dropdown-content{
+            border-radius:0;
+            box-shadow: none;
+            @media screen and (orientation: landscape) {
+                height: 100vh;
+                overflow-y: auto;
+            }
+        }
+    }
+}
+
+/// Classe extend permettant d'aligner verticalement
+/// des éléments html
+///
+/// Note : avec l'attribut '!optional' l'extend devient optionnel
+/// pas d'erreur en cas de classe non existante
+///
+/// @example scss - %vertical-align
+///   @extend %vertical-align !optional;
+%vertical-align {
+    display: inline-block;
+    vertical-align:middle;
+}
+
+/// Classe extend permettant de créer un bouton rond
+///
+/// Note : avec l'attribut '!optional' l'extend devient optionnel
+/// pas d'erreur en cas de classe non existante
+///
+/// @example scss - %btn-circle
+///   @extend %btn-circle !optional;
+%btn-circle {
+    border-radius: 50%;
+}
+
+// FLEX FEATURES
+//---------------------------------------------------------------
+
+/// Classe extend permettant de gérer le passage
+/// de type flex-direction à column
+///
+/// @example scss - %is-column
+///   @extend %is-column !optional;
+%is-column {
+    flex-direction: column;
+}
+
+/// Classe extend permettant de gérer le flex
+///
+/// @example scss - %is-column
+///   @extend %is-flex !optional;
+%is-flex {
+    display: flex;
+}
+
+/// Classe extend permettant de gérer le passage
+/// de type flex-direction à column-reverse
+///
+/// @example scss - %is-column-reverse
+///   @extend %is-column-reverse !optional;
+%is-column-reverse {
+    flex-direction: column-reverse;
+}
+
+/// Classe extend permettant de gérer l'alignement
+/// des items sur la gauche
+///
+/// @example scss - %is-flex-align-left
+///   @extend %is-flex-align-left !optional;
+%is-flex-align-left {
+    align-items: flex-start;
+}
+
+/// Classe extend permettant de justifier
+/// des items en flex
+///
+/// @example scss - %is-flex-align-left
+///   @extend %is-flex-align-left !optional;
+%is-justify-align-left {
+    justify-content: flex-start;
+}
+
+/// Classe extend permettant de justifier
+/// des items en flex
+///
+/// @example scss - %is-flex-align-left
+///   @extend %is-flex-align-left !optional;
+%is-justify-space-between {
+    justify-content: space-between;
+}
+
+/// Classe extend permettant de gérer le facteur
+/// de grossissement d'un item
+///
+/// @example scss - %is-growed
+///   @extend %is-growed !optional;
+%is-growed {
+    flex-grow: 1;
+}
+
+/// Classe extend permettant de gérer le facteur
+/// de rétrécissement d'un item
+///
+/// @example scss - %is-shrinked
+///   @extend %is-shrinked !optional;
+%is-shrinked {
+    flex-shrink: 1 !important;
+    flex-grow: 0 !important;
+}
+
+/// Classe extend permettant de gérer le facteur
+/// de rétrécissement d'un item
+///
+/// @example scss - %is-shrinked
+///   @extend %is-shrinked !optional;
+%is-align-item-center {
+    align-items: center;
+}
+
+/// Classe extend permettant de gérer positionner
+/// les éléments sur plusieurs lignes
+///
+/// @example scss - %is-wrapped
+///   @extend %is-wrapped !optional;
+%is-wrapped {
+    flex-wrap: wrap;
+}
+
+/// Classe extend permettant de gérer positionner
+/// les éléments verticalement
+///
+/// @example scss - %is-wrapped
+///   @extend %is-flex-align-center-vertical !optional;
+%is-flex-align-center-vertical {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+// LEVEL FEATURES
+//---------------------------------------------------------------
+
+/// Classe extend permettant de fixer
+/// une taille fixe sur un élément level
+///
+/// @example scss - %is-height-fixed
+///   @extend %is-height-fixed !optional;
+%is-height-fixed {
+    height: $is-height-fixed;
+}
+
+// COLUMNS FEATURES
+//---------------------------------------------------------------
+
+/// Classe extend permettant de gérer l'alignement
+/// flex en disposant les éléments en colonne
+///
+/// @example scss - %is-flex-column
+///   @extend %is-flex-column !optional;
+%is-flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+
+// POSITION
+//---------------------------------------------------------------
+
+/// Classe extend permettant de mettre
+/// un élément en position relative
+///
+/// @example scss - %is-relative
+///   @extend %is-relative !optional;
+%is-relative {
+    position: relative;
+}
+
+/// Classe extend permettant de mettre
+/// un élément en position absolute
+///
+/// @example scss - %is-absolute
+///   @extend %is-absolute !optional;
+%is-absolute {
+    position: absolute;
+}
+
+
+// OTHERS
+//---------------------------------------------------------------
+
+/// Classe extend permettant de mettre
+/// un élément avec des border radius basique
+///
+/// @example scss - %is-rounded
+///   @extend %is-rounded !optional;
+%is-rounded {
+    border-radius: $radius;
+}
+
+/// Classe extend permettant de mettre
+/// un élément avec des border radius large
+///
+/// @example scss - %is-rounded-large
+///   @extend %is-rounded-large !optional;
+%is-rounded-large {
+    border-radius: $radius-large;
+}
+
+/// Classe extend permettant de mettre
+/// en mode display inline
+///
+/// @example scss - %is-inline
+///   @extend %is-inline !optional;
+%is-inline {
+    display: inline;
+}
+
+%animated-dotted {
+    hr {
+        margin: 0;
+        padding: 0;
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        font-size: 1px;
+        border: none;
+        will-change: transform, visibility;
+        transition: all 200ms ease-out;
+        transform: scaleX(0);
+        visibility: hidden;
+        z-index: z('default');
+        background: $color-animated-dotted;
+    }
+    &:hover hr {
+        visibility: visible;
+        cursor: pointer;
+        transform: scaleX(1);
+    }
+}
+
+%more-action-button {
+    position: relative;
+    .more-action-button {
+        position: absolute;
+        right: 0.5rem;
+        top: 0.75rem;
+    }
+}

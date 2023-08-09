@@ -1,0 +1,57 @@
+// -------------------------------
+// == Bulma Button variables
+// -------------------------------
+
+// TEXT
+$family-sans-serif: 'Roboto Condensed';
+$body-weight: $weight-light;
+$size-7: 0.85rem;
+
+// TITLE
+$title-strong-weight: $weight-bold;
+$subtitle-negative-margin: -1.5rem !default;
+
+// DIVERS
+$radius: 5px;
+$radius-large: 8px;
+$variable-columns: true;
+$gap: 48px;
+
+// COLORS
+$red-ng: #972d30; //hsl(358, 54% 38%)
+$green: #74c365; //hsl(110, 44% 58%)
+$yellow: #fff8c8; //hsl(37, 81% 50%)
+$orange: #e79819; //hsl(21, 82% 51%)
+$red: #e71919; //hsl(0, 81% 50%)
+$primary: $cyan; //hsl(204, 86%, 53%)
+$link: $red-ng; //hsl(358, 54% 38%)
+$public: #9b79a5;
+$offline: #363636;
+$warning: $orange;
+$warning-invert: findColorInvert($orange);
+$info: $yellow;
+$info-invert: findColorInvert($yellow);
+
+// TITLE
+$title-weight: $weight-light;
+$subtitle-weight: $weight-bold;
+
+// PAGINATION
+$pagination-border-color: none;
+$pagination-hover-color: none;
+$pagination-hover-border-color: none;
+$pagination-current-background-color: $grey-lighter;
+$pagination-current-color: $grey-darker;
+$pagination-current-border-color: none;
+
+// BOX
+$box-shadow: none;
+$box-radius: $radius;
+
+// BREAKPOINTS
+$tablet: 769px;
+$desktop: 961px + (2 * $gap);
+$widescreen: 1152px + (2 * $gap);
+$fullhd: 1344px + (2 * $gap);
+
+$color-circle: $white-ter;

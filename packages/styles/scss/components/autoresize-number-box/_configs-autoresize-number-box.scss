@@ -1,0 +1,12 @@
+@import "../../core/vendors/bulma/utilities/_initial-variables";
+@import "../../core/vendors/bulma/utilities/_functions";
+@import "../../core/vendors/bulma/_bulma-override";
+
+//--------------------------------------
+// Configuration Autoresize number box
+//--------------------------------------
+
+$autoresized-number-box-color: $primary !default;
+$autoresized-number-box-size: 1.5rem !default;
+
+

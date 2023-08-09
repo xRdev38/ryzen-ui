@@ -1,0 +1,59 @@
+{
+  "name": "@xrdev_38/styles",
+  "version": "0.0.1",
+  "description": "Styles for the Ryzen Design System",
+  "main": "index.scss",
+  "scripts": {
+    "dev": "webpack --watch --mode development",
+    "build": "yarn clean && webpack --mode production",
+    "build:docs": "yarn clean && node scripts/build-docs.js",
+    "clean": "rimraf dist"
+  },
+  "author": "xdev38",
+  "license": "ISC",
+  "keywords": [
+    "ryzen",
+    "ryzen-design-system",
+    "components",
+    "web components"
+  ],
+  "files": [
+    "css",
+    "scss",
+    "index.scss"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "autoprefixer": "^10.4.7",
+    "css": "^3.0.0",
+    "css-loader": "^6.8.1",
+    "cssnano": "^6.0.0",
+    "mini-css-extract-plugin": "^2.7.6",
+    "postcss": "^8.4.14",
+    "postcss-flexbugs-fixes": "^5.0.2",
+    "rimraf": "^5.0.0",
+    "sass": "^1.64.2",
+    "sass-loader": "^13.3.2",
+    "sassdoc": "^2.7.4",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  },
+  "peerDependencies": {
+    "sass": "^1.51.0"
+  },
+  "peerDependenciesMeta": {
+    "sass": {
+      "optional": true
+    }
+  },
+  "sideEffects": [
+    "index.scss",
+    "scss/**/*.scss",
+    "scss/**/*.css",
+    "css/**/*.css"
+  ]
+}

@@ -1,0 +1,140 @@
+// -------------------------------
+// == Override Bulma notification
+// -------------------------------
+
+@include tablet {
+  @keyframes notification {
+    from {
+      right: calc( -#{$notification-width} - 50px);
+    }
+    to {
+      right: 0;
+    }
+  }
+}
+
+@include mobile {
+  @keyframes notification {
+    from {
+      top: -100vh;
+    }
+    to {
+      top: 0;
+    }
+  }
+}
+
+
+.notification {
+  background-color: $notification-background-color;
+  border-radius: $notification-radius;
+  padding: $notification-padding;
+  width: $notification-width;
+  position: relative;
+  box-shadow: 0 3px 10px 0 rgba($notification-background-color, 0.3);
+  color: $text-invert;
+  animation: notification;
+  animation-duration: 0.3s;
+  transition: all ease 0.3s;
+  right: 0;
+
+  &.is-closed 
+  {
+    right: calc( -#{$notification-width} - 50px);
+  }
+
+  a:not(.button) {
+    color: currentColor;
+    text-decoration: underline;
+  }
+
+  strong {
+    color: currentColor;
+  }
+
+  code,
+  pre {
+    background: $white;
+  }
+
+  pre code {
+    background: transparent;
+  }
+
+  & > .delete {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+
+  .notification-body {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .notification-icon {
+    font-size: 2em;
+    text-align: center;
+    padding-right: 0.75em;
+  }
+
+  .notification-action {
+    padding-top: 0.75rem;
+  }
+
+  .title,
+  .subtitle,
+  .content {
+    color: currentColor;
+  }
+
+ 
+  // Colors
+  @each $name, $pair in $colors {
+    $color: nth($pair, 1);
+    $color-invert: nth($pair, 2);
+
+    &.is-#{$name} {
+      background-color: $color;
+      color: $color-invert;
+      box-shadow: 0 3px 10px 0 rgba($color, 0.4);
+    }
+  }
+
+  //Responsiveness
+  @include mobile {
+    width: 100%;
+    padding-left: 0.75rem;
+
+    &.is-closed 
+    {
+      left: 0;
+      top: -100vh;
+    }
+
+    .notification-icon {
+      font-size: 1.5em;
+      text-align: center;
+      padding-right: 0.5em;
+    }
+  }
+}
+
+.notification-wrapper
+{
+  position: fixed;
+  z-index: z('middle');
+
+  @include tablet {
+    top: 60px;
+    right: 0;
+  }  
+  
+  @include mobile {
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  
+}

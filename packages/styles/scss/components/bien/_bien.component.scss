@@ -1,0 +1,312 @@
+//-------------------------------
+// Bien
+//-------------------------------
+
+
+.biens .bien:not(:last-child) {
+  margin-bottom: 0.75rem;
+}
+
+.biens.is-condensed .bien:not(:last-child) {
+  margin-bottom: 1px;
+}
+
+
+.bien {
+  display: flex;
+  flex-direction: row;
+  background-color: $white;
+  border-radius: $radius;
+
+  &.is-small {
+    line-height: initial;
+
+    .bien-image {
+      flex-basis: 7em;
+      .image {
+        min-height: 5em;
+      }
+    }
+
+    .bien-content {
+      padding: 0.75em;
+      .content {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  // Responsiveness
+  @include mobile {
+    &:not(.is-mobile) {
+      flex-direction: column;
+    }
+  }
+
+  //image
+  //------------------------------
+  .bien-image {
+    display: flex;
+    position: relative;
+    flex-basis: 18em;
+    min-width: 300px;
+
+    // Responsiveness
+    @include mobile {
+      flex-basis: 12em;
+    }
+
+    a.image {
+      min-height: 11.25em;
+      object-fit: none;
+      background-size: cover;
+      background-position: center center;
+    }
+
+    .image {
+      flex: 1;
+      min-height: 120px;
+      max-height: 240px;
+      object-fit: cover;
+      border-radius: $radius 0 0 $radius;
+
+      &.has-no-image {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        &:before,
+        &:after {
+          display: block;
+          content: 'xx';
+        }
+        &:before {
+          font-family: '#{$default-font-face-family-icons}';
+          content: "\e711";
+          font-size: $size-3;
+        }
+        &:after {
+          content: attr(data-no-image);
+        }
+      }
+
+      @include mobile {
+        border-radius: $radius $radius 0 0 ;
+      }
+    }
+  }
+
+  //Content
+  //------------------------------
+  .bien-content {
+    padding: 1.5em;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    @extend %more-action-button !optional;
+
+    .content {
+      flex-grow: 1;
+      margin-bottom: 0; 
+
+      .title {
+        margin-bottom: 0.25em;
+        font-size: $size-6;
+        margin-top: 0;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+        margin-top: 0;
+        margin-bottom: 0.75em;
+        font-weight: $weight-light;
+      }
+
+      .content-left {
+        @include desktop {
+          padding-right: 3rem;
+        }
+        @include fullhd {
+          padding-right: 7rem;
+        }
+      }
+
+      .bien-infos {
+        padding-top: 1.20rem;
+      }
+    }
+  }
+
+  //Date
+  //------------------------------
+  .bien-date {
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0.75em;
+    display: flex;
+    height: calc(100% - 1.5em);
+    flex-direction: column;
+    text-align: center;
+    width: 6em;
+
+    .date {
+      flex-grow: 1;
+      border-radius: $radius $radius 0 0;
+      background-color: rgba($white, 0.9);
+      margin-bottom: 1px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+
+      span {
+        display: block;
+        &.numero {
+          font-size: $size-3;
+          line-height: 2rem;
+        }
+      }
+    }
+
+    .heure {
+      flex-shrink: 1;
+      background-color: rgba($white, 0.9);
+      padding: 0.5em;
+      font-size: $size-5;
+      border-radius: 0 0 $radius $radius;
+    }
+  }
+
+  //Info
+  //------------------------------
+  .bien-info {
+    @extend %is-absolute !optional;
+    width: 32px;
+    height: 32px;
+    right: 0;
+    bottom: 0;
+    > span {
+      margin-top: calc((32px / 2) - (1.25rem / 2));
+      margin-left: calc((32px / 2) - (1.25rem / 2));
+    }
+  }
+
+  @include mobile {  
+    .bien-info-item {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding-bottom: 0.5rem;
+
+        > span:last-child {
+            text-align: right;
+        }
+    }
+  }
+
+  //Liste d'infos
+  //------------------------------
+  .bien-infos {
+    margin: 0;
+    list-style-type: none;
+  }
+}
+
+//Action
+//------------------------------
+.action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  .action-left .action-item {
+    margin-right: 0;
+    &:not(:last-child) {
+      margin-right: 0.5em;
+    }
+  }
+
+  .action-right .action-item {
+    margin-left: 0;
+    &:not(:first-child) {
+      margin-left: 0.5em;
+    }
+  }
+
+  // Responsiveness
+  @include mobile {
+    flex-direction: column;
+
+    .action-item {
+      display: flex;
+      margin-bottom: 0.75rem;
+    }
+
+    .action-left {
+      width: 100%;
+      margin-bottom: 1rem;
+      .action-item:not(:first-child) {
+        margin-left: 0;
+      }
+    }
+
+    .action-right {
+      width: 100%;
+      .action-item:not(:first-child) {
+        margin-left: 0;
+      }
+    }
+  }
+}
+
+// Bien version card 
+//-----------------------------------
+.bien.is-card {
+  flex-direction: column;
+
+  .bien-image {
+    flex-basis: 12em;
+    min-width: inherit;
+    .image {
+      border-radius: $radius $radius 0 0;
+    }
+  }
+
+  .action {
+    flex-direction: column;
+  }
+
+  .action-left {
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  .action-right {
+    width: 100%;
+  }
+
+  .action-item {
+    display: flex;
+    margin-bottom: 0.75rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// No picture
+//-----------------------------------
+.empty-picture {
+  height: 200px;
+  .level-item {
+    height: 100%;
+  }
+  @include touch() {
+    & {
+      height: 300px;
+    }
+  }
+}
+

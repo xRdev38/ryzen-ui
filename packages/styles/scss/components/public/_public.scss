@@ -1,0 +1,44 @@
+@keyframes public-mode-message {
+    from {
+      height: 0;
+    }
+    to {
+      height: 30px;
+    }
+  }
+
+.is-public {
+    transition: all ease 0.1s;
+    @include desktop {
+        min-height: 100vh;
+        height: calc(100vh - 30px);
+    }
+
+    .public-mode-message {
+        display: flex;
+    }
+
+    .public-not-displayed {
+        display: none !important;
+    }
+
+    .sidebar-left {
+        .sidebar-wrapper {
+            height: calc(100% - 90px);
+        }
+    }
+}
+
+.public-mode-message
+{
+    display: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    background-color: $body-private-color;
+    color: $white;
+    text-align: center;
+    height: 30px;
+    font-size: $size-7;
+    animation: public-mode-message ease 0.1s;
+}

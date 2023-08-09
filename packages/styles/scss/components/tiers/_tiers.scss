@@ -1,0 +1,163 @@
+.tier {
+    background-color: $white;
+    padding: $tier-padding;
+    border-radius: $tier-radius;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    @extend %more-action-button !optional;
+    flex-wrap: wrap;
+
+    .tier {
+        background-color: $white-bis;
+    }
+
+    .tier-picture {
+        display: flex;
+        align-items: center;
+        padding: 0 1.5rem;
+
+        @include mobile {
+            justify-content: center;
+            padding-bottom: 1rem;
+        }
+    }
+
+    .title {
+        font-size: $size-6;
+    }
+
+    .tier-content {
+        flex-grow: 1;
+
+        &:first-child {
+            margin-left: 1.5rem;
+        }
+    }
+
+    .tier-document {
+        padding-top: 1.5rem;
+        
+        @include desktop {
+            padding: 1.5rem 1.5rem 0;
+            width: 100%;
+        }
+
+        .file-list {
+            padding-bottom: 1.5rem;
+        }
+    }
+
+    .tier-related {
+        width: 100%;
+        padding: 0 1.5rem;
+    }
+
+    .tier-header {
+        display: flex;
+        align-items: center;
+        padding-bottom: 0.25rem;
+    }
+
+    .tier-header-title,
+    .tier-header-infos {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .tier-header-item {
+        margin-right: 0.5rem;
+    }
+
+    @include mobile {
+        display: block;
+
+        .tier-header,
+        .tier-header-title,
+        .tier-header-infos {
+            display: block;
+            text-align: center;
+        }
+
+        .tier-header-item {
+            width: 100%;
+        }
+
+        .tier-header-title,
+        .tier-header-infos {
+            padding-bottom: 1rem;
+        }
+
+        .tier-header-item {
+            margin: 0 0 0.5rem 0;
+        }
+
+        .tier-info-item {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding-bottom: 0.5rem;
+
+            > span:last-child {
+                text-align: right;
+            }
+        }
+    }
+
+    &.is-card {
+        display: block;
+
+        .tier-header,
+        .tier-header-title,
+        .tier-header-infos {
+            display: block;
+            text-align: center;
+        }
+
+        .tier-header-item {
+            width: 100%;
+        }
+
+        .tier-header-title,
+        .tier-header-infos {
+            padding-bottom: 1rem;
+        }
+
+        .columns {
+            display: block;
+        }
+
+        .tier-header-item {
+            margin: 0 0 0.5rem 0;
+        }
+
+        .tier-picture {
+            justify-content: center;
+            padding-bottom: 1rem;
+        }
+
+        .tier-info-item {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding-bottom: 0.5rem;
+
+            > span:last-child {
+                text-align: right;
+            }
+        }
+    }
+}
+
+.tiers {
+    .tier:not(:last-child) {
+        margin-bottom: 1.25rem;
+    }
+
+    &.is-condensed {
+        .tier:not(:last-child) {
+            margin-bottom: 1px;
+        }
+    }
+}

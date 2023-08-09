@@ -1,0 +1,83 @@
+// -------------------------------
+// == Alert components
+// -------------------------------
+
+/*doc
+---
+title: Alert
+name: alert danger
+category: Components CSS
+---
+
+```html_example_alerts
+<div class="alerts">
+  <div class="alert is-danger">
+        <p class="is-marginless">
+          C'est un contenu de base pour une alerte danger -> is-danger
+        </p>
+        <button class="delete"></button>
+    </div>
+</div>
+```
+*/
+
+
+/*doc
+---
+title: Alert success
+name: alert success
+category: Components CSS
+---
+
+```html_example_alerts_success
+<div class="alerts">
+  <div class="alert is-success">
+        <p class="is-marginless">
+          C'est un contenu de base pour une alerte success -> is-success
+        </p>
+        <button class="delete"></button>
+    </div>
+</div>
+```
+*/
+
+/*doc
+---
+title: Alert warning
+name: alert warning
+category: Components CSS
+---
+
+```html_example_alerts_success
+<div class="alerts">
+  <div class="alert is-warning">
+        <p class="is-marginless">
+          C'est un contenu de base pour une alerte warning -> is-warning
+        </p>
+        <button class="delete"></button>
+    </div>
+</div>
+```
+*/
+
+/*doc
+---
+title: Alert info
+name: alert info
+category: Components CSS
+---
+
+```html_example_alerts_success
+<div class="alerts">
+  <div class="alert is-info">
+        <p class="is-marginless">
+          C'est un contenu de base pour une alerte info -> is-info
+        </p>
+        <button class="delete"></button>
+    </div>
+</div>
+```
+*/
+
+@import "_configs-alert";
+@import "_alert";

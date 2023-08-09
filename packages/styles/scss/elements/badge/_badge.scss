@@ -1,0 +1,121 @@
+@mixin badge-size($size) {
+  $badgeSize: $size;
+  $leftPosition: calc(100% - ( #{$badgeSize} * 1.15 ));
+  $topPosition: calc(0px - ( #{$badgeSize} * 0.9 ));
+
+  &[data-badge]::after {
+    top: $topPosition;
+    left: $leftPosition;
+    min-height: calc( #{$badgeSize} * 1.25 );
+    min-width: calc( #{$badgeSize} * 1.25 );
+  }
+
+  &:not([data-badge=""])::after {
+    font-size: $size * 0.75;
+    line-height: $size * 0.75;
+  }
+
+  &[data-badge=""]::after {
+    width: $badgeSize;
+  }
+
+  &.is-badge-left {
+    &::after {
+      left: calc(0px - ( #{$badgeSize} / 2 ));
+    }
+  }
+
+  &.is-badge-bottom {
+    &::after {
+      top: calc(100% - ( #{$badgeSize} / 2 ));
+    }
+  }
+
+  &.is-badge-bottom-left {
+    &::after {
+      left: calc(0px - ( #{$badgeSize} / 2 ));
+      top: calc(100% - ( #{$badgeSize} / 2 ));
+    }
+  }
+}
+
+.badge {
+  position: relative;
+  white-space: nowrap;
+
+  &[data-badge]::after {
+    position: absolute;
+    left: 100%;
+    z-index: 99;
+    margin: 0;
+    background: $primary;
+    background-clip: padding-box;
+    border-radius: $badge-border-radius;
+    //box-shadow: 0 0 0 $badge-border-size $white;
+    color: $white;
+    content: attr(data-badge);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 400;
+  }
+
+  &:not([data-badge=""])::after {
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  &[data-badge=""]::after {
+    display: inline-block;
+    vertical-align: inherit;
+  }
+
+  @each $name, $pair in $colors {
+    $color: nth($pair, 1);
+    $color-invert: nth($pair, 2);
+
+    &.is-badge-#{$name} {
+      &[data-badge]::after, &:not([data-badge])::after {
+        background: $color;
+        color: $color-invert;
+      }
+    }
+  }
+
+  &.is-badge-outlined {
+    &[data-badge]::after {
+      background-color: $white;
+      box-shadow: none;
+      border: $badge-border-size solid $primary;
+      color: $primary;
+    }
+
+    @each $name, $pair in $colors {
+      $color: nth($pair, 1);
+      $color-invert: nth($pair, 2);
+
+      &.is-badge-#{$name} {
+        &[data-badge]::after {
+          background: $white;
+          box-shadow: none;
+          border: $badge-border-size solid $color;
+          color: $color;
+        }
+      }
+    }
+  }
+
+  @include badge-size($size-normal);
+
+  &.is-badge-small {
+    @include badge-size($size-small);
+  }
+
+  &.is-badge-medium {
+    @include badge-size($size-medium);
+  }
+
+  &.is-badge-large {
+    @include badge-size($size-large);
+  }
+}

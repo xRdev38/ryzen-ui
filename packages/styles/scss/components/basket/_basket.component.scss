@@ -1,0 +1,27 @@
+// -------------------------------
+// == Basket components
+// -------------------------------
+
+/*doc
+---
+title: Basket
+name: basket
+category: Components CSS
+---
+
+```html_example_basket
+    <div class="basket-wrapper is-active">
+        <div class="basket">
+            <div class="basket-header">
+                <div class="basket-header-title">
+                    2 biens retenus pour
+                    <a class="button is-inside-text is-white has-text-weight-bold open-search-prospect">Nouveau dossier</a>
+                </div>
+            </div>
+        </div>
+    </div>
+```
+*/
+
+@import "_configs-basket.scss";
+@import "_basket.scss";

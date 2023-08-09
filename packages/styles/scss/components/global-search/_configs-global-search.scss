@@ -1,0 +1,55 @@
+//-------------------------------
+// Configuration Global-search
+//-------------------------------
+
+// Back Icon
+//--------------------------------------
+$back-icon-height: 60px;
+$back-icon-width: $back-icon-height;
+$back-icon-color: $white;
+$back-icon-bg-color: #972d30;
+
+
+// Autocomplete-suggestion
+//--------------------------------------
+$auto-suggestion-width: 100%;
+$auto-suggestion-top: 50px;
+$auto-suggestion-b-radius: $radius;
+$auto-suggestion-b-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+$auto-suggestion-bg-color: $white;
+
+
+// Item-suggestion
+//--------------------------------------
+$item-suggestion-bg-color: lighten($link, 57);
+
+$line-item-suggestion-line-height: 36px;
+
+
+// Quality
+//--------------------------------------
+$quality-width: 40px;
+$quality-height: $quality-width;
+$quality-line-height: $quality-height;
+$quality-bg-color: $grey-light;
+$quality-b-radius: 100%;
+
+
+// headerbar-search-input
+//--------------------------------------
+$headerbar-search-input-height: 60px;
+
+//
+//------------------------------------
+$autocomplete-suggestion-top: $headerbar-search-input-height;
+$autocomplete-suggestion-height: $headerbar-search-input-height;
+
+
+// Icon
+//--------------------------------------
+$icon-width: 60px;
+$icon-height: 60px;
+
+// delete-input
+//--------------------------------------
+$delete-input-bg-color: $white;

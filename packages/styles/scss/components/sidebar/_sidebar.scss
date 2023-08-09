@@ -1,0 +1,102 @@
+.sidebar {
+    @include desktop {
+      width: $sidebar-menu-width;
+    }
+  
+    .sidebar-menu {
+      a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: $sidebar-menu-width;
+        height: $sidebar-menu-item-height;
+        text-align: center;
+        color: $text;
+        transition: all ease 0.1s;
+  
+        &:hover {
+          background-color: darken($white-ter, 5);
+        }
+  
+        &.is-active {
+          background-color: $link;
+          color: $link-invert;
+        }
+  
+        i {
+          font-size: $size-5;
+        }
+  
+        // Color
+        @each $name, $pair in $colors {
+          $color: nth($pair, 1);
+          $color-invert: nth($pair, 2); 
+  
+          &.is-#{$name} {
+            background-color: $color;
+            width: calc(#{$sidebar-menu-width} - 20px);
+            margin-left: 10px;
+            color: $color-invert;
+            border-radius: $radius-rounded;
+  
+            &:hover {
+              transition: none;
+              background-color: darken($color, 2.5%);
+              box-shadow: 0 0 0 2px darken($color, 2.5%);
+            }
+  
+            &:active {
+              background-color: darken($color, 30%);
+              box-shadow: 0 0 0 2px darken($color, 30%);
+            }
+  
+            @include touch {
+              border-radius: $radius-rounded;
+            }
+          }
+        }
+      }
+  
+      @include touch {
+        text-align: right;
+  
+        li {
+          display: inline-block;
+  
+          &:only-child,
+          &:last-child {
+            @each $name, $pair in $colors {
+              a.is-#{$name} {
+                border-radius: $radius-rounded;
+              }
+            }
+          }
+  
+          a {
+            width: 45px;
+            height: calc(#{$sidebar-menu-item-height} - 15px);
+          }
+        }
+      }
+    }
+  
+    .sidebar-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: calc(100% - 60px);
+    }
+  
+    &.sidebar-left {
+      .sidebar-wrapper {
+        position: fixed;
+        z-index: z('middle') + 1;
+      }
+    }
+
+    &.sidebar-right .sidebar-menu {
+      position: sticky;
+      right: 0;
+      top: 120px;
+    }
+  }
